@@ -1,0 +1,20 @@
+[
+  {
+    "name": "💰 Прайс",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Display service pricing list"
+            }
+          }
+        ],
+        "send": {
+          "callback": "price_list"
+        }
+      }
+    ]
+  }
+]
