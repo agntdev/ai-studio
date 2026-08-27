@@ -5,9 +5,9 @@
       {
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Show advertising service description and lead form"
+              "text": "Рекламные AI‑концепции, которые быстро объясняют ценность бренда и дают повод остановиться."
             }
           }
         ],

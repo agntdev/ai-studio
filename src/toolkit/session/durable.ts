@@ -43,6 +43,7 @@ export interface WorkerEnv {
   BOT_TELEMETRY_URL?: string;
   BOT_TELEMETRY_SECRET?: string;
   BOT_TELEMETRY_SALT?: string;
+  ADMIN_CHAT_ID?: string;
 }
 
 interface Reminder {
@@ -140,6 +141,21 @@ export class ChatDO {
       }
       if (request.method === "DELETE") {
         await this.state.storage.delete("session");
+        return new Response(null, { status: 204 });
+      }
+    }
+
+    // Explicit application records and indexes. Feature handlers address one
+    // stable owner-scoped object, so listing applications never scans storage.
+    if (url.pathname === "/lead-data") {
+      const key = url.searchParams.get("key");
+      if (!key) return new Response("missing key", { status: 400 });
+      if (request.method === "GET") {
+        const value = await this.state.storage.get<unknown>(`lead:${key}`);
+        return value === undefined ? new Response(null, { status: 204 }) : Response.json(value);
+      }
+      if (request.method === "PUT") {
+        await this.state.storage.put(`lead:${key}`, await request.json());
         return new Response(null, { status: 204 });
       }
     }

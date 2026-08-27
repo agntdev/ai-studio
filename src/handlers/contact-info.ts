@@ -1,17 +1,15 @@
 import { Composer } from "grammy";
+import type { Ctx } from "../bot.js";
+import { inlineButton, inlineKeyboard, registerMainMenuItem } from "../toolkit/index.js";
 
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "📞 Связаться", data: "contact_info" }) if the toolkit exposes it.
-
-const composer = new Composer();
+registerMainMenuItem({ label: "📞 Связаться", data: "contact_info", order: 60 });
+const composer = new Composer<Ctx>();
 
 composer.callbackQuery("contact_info", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.reply("Show business contacts and working hours");
+  await ctx.editMessageText("Напишите нам прямо здесь — команда на связи ежедневно с 10:00 до 19:00 по Москве.", {
+    reply_markup: inlineKeyboard([[inlineButton("← В меню", "menu:main")]]),
+  });
 });
 
 export default composer;

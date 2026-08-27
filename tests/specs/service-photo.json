@@ -5,9 +5,9 @@
       {
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Show AI photo service description and lead form"
+              "text": "AI‑фото для карточек товаров, кампаний и соцсетей. Соберём визуал под ваш бренд."
             }
           }
         ],
