@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Start lead submission flow"
+              "text": "Что хотите создать?"
             }
           }
         ],

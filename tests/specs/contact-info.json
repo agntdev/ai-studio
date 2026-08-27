@@ -5,9 +5,9 @@
       {
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Show business contacts and working hours"
+              "text": "Напишите нам прямо здесь — команда на связи ежедневно с 10:00 до 19:00 по Москве."
             }
           }
         ],

@@ -5,9 +5,9 @@
       {
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Display service pricing list"
+              "text": "AI‑фото — от 8 000 ₽\nAI‑видео — от 25 000 ₽\nРеклама для брендов — от 35 000 ₽\n\nФинальная стоимость зависит от задачи и объёма."
             }
           }
         ],

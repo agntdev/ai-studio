@@ -1,0 +1,12 @@
+[
+  {
+    "name": "lead flow handles an incomplete configured-free submission",
+    "steps": [
+      { "send": { "callback": "lead:start" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Что хотите создать?" } }] },
+      { "send": { "callback": "lead:service:photo" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Расскажите о задаче: цель, формат и что важно для бренда." } }] },
+      { "send": { "text": "Нужны изображения для карточки товара" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Прикрепите фото, видео или документ. Если материалов нет, нажмите «Нет». Можно отправить несколько сообщений." } }] },
+      { "send": { "callback": "lead:materials:none" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Как с вами связаться? Оставьте удобный контакт." } }] },
+      { "send": { "text": "@brand" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Заявки пока не подключены: владельцу нужно настроить чат для приёма заявок." } }] }
+    ]
+  }
+]

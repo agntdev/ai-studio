@@ -1,0 +1,8 @@
+[
+  {
+    "name": "application desk stays owner-only when admin is not configured",
+    "steps": [
+      { "send": { "callback": "desk:open" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Owner access isn't set up yet." } }] }
+    ]
+  }
+]

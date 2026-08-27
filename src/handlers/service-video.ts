@@ -1,17 +1,13 @@
 import { Composer } from "grammy";
+import type { Ctx } from "../bot.js";
+import { inlineButton, inlineKeyboard, registerMainMenuItem } from "../toolkit/index.js";
 
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "🎬 AI‑видео", data: "service:video" }) if the toolkit exposes it.
-
-const composer = new Composer();
+registerMainMenuItem({ label: "🎬 AI‑видео", data: "service:video", order: 20 });
+const composer = new Composer<Ctx>();
 
 composer.callbackQuery("service:video", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.reply("Show AI video service description and lead form");
+  await ctx.editMessageText("AI‑видео для запусков, рекламы и ленты. От идеи до динамичного ролика — в одном процессе.", { reply_markup: inlineKeyboard([[inlineButton("Оставить заявку", "lead:video")], [inlineButton("← В меню", "menu:main")]]) });
 });
 
 export default composer;
